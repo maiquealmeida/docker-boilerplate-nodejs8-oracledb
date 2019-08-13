@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - ./:/usr/app/:z
+      - /usr/app/node_modules
+    ports:
+      - 3000:3000
+      - 9229:9229
+    environment:
+      - NODE_ENV=development
+      - NODE_ORACLEDB_HOST=127.0.0.1
+      - NODE_ORACLEDB_PORT=1521
+      - NODE_ORACLEDB_SERVICENAME=SERVER
+      - NODE_ORACLEDB_USER=USERNAME
+      - NODE_ORACLEDB_PASSWORD=PASSWORD
+    command: npm run dev
